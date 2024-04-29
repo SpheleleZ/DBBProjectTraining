@@ -1,5 +1,6 @@
 package org.adactin.hotel.hooks;
 
+import com.aventstack.extentreports.ExtentReports;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
@@ -9,6 +10,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 
 
@@ -40,6 +43,7 @@ public class Hooks {
         if (driver == null) {
             return;
         }
+
         driver.quit();
         driver = null;
         System.out.println("Closing the browser............");

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         glue = {"org.adactin.hotel.stepDefinitions","org.adactin.hotel.hooks"},
         monochrome = true,
         dryRun = false,
-        tags = "@login or @searchHotel",
+        tags = "@login",
         plugin = {"pretty",
                 "rerun:target/FailedScenarios/failed_scenarios.txt",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"

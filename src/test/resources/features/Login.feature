@@ -5,13 +5,12 @@ Feature: Login
 
   Background:
     Given User is on Adactin Hotel login page build two
-    And Verify login page build two is open
 
   Scenario Outline: Login with valid credentials
     When User enters valid username <username>
     And Enters valid password <password>
     And Click on login button
-    Then user should be take to search Hotel page
+    Then user should be taken to the search Hotel page
 
     Examples:
       | username  | password   |
@@ -25,9 +24,19 @@ Feature: Login
 
     Examples:
       | username  | password   |
-      | SpheleleZ | Nok2laSphe |
+      | Sphe12334 | Nok2lasphe |
 
-  Scenario Outline: Login with invalid password
+  Scenario Outline: Login with no characters or empty username
+    When User enters invalid username <username>
+    And Enters valid password <password>
+    And Click on login button
+    Then User should get a message to enter Username
+
+    Examples:
+      | username | password   |
+      |          | Nok2lasphe |
+
+  Scenario Outline: Login with invalid or non registered password
     When User enters valid username <username>
     And Enters invalid password <password>
     And Click on login button
@@ -35,4 +44,14 @@ Feature: Login
 
     Examples:
       | username  | password   |
-      | SpheleleZ | Nok2lasphe |
+      | SpheleleZ | 3465tfggdd |
+
+  Scenario Outline: Login with no characters or empty password
+    When User enters invalid username <username>
+    And Enters valid password <password>
+    And Click on login button
+    Then User should get a message to enter password
+
+    Examples:
+      | username  | password |
+      | SpheleleZ |          |

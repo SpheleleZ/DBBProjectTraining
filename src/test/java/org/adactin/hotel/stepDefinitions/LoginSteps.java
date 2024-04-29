@@ -1,6 +1,5 @@
 package org.adactin.hotel.stepDefinitions;
 
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.*;
 
 import org.adactin.hotel.pages.LoginPage;
@@ -25,13 +24,6 @@ public class LoginSteps {
 
     @Given("User is on Adactin Hotel login page build two")
     public void user_is_on_adactin_hotel_login_page_build_two() throws Throwable {
-        assertTrue(loginPage.verifyLoginPageIsOpen()
-                        .contains("/HotelAppBuild2/")
-                , "Login page build two is not open");
-    }
-
-    @And("Verify login page build two is open")
-    public void verify_login_page_build_two_is_open() throws Throwable {
         assertTrue(loginPage.verifyLoginPageIsOpen()
                         .contains("/HotelAppBuild2/")
                 , "Login page build two is not open");
@@ -62,8 +54,8 @@ public class LoginSteps {
         searchHotelPage = loginPage.setLoginButton();
     }
 
-    @Then("user should be take to search Hotel page")
-    public void user_should_be_take_to_search_hotel_page() throws Throwable {
+    @Then("user should be taken to the search Hotel page")
+    public void user_should_be_taken_to_the_search_hotel_page() throws Throwable {
         assertTrue(searchHotelPage.verifySearchHotelPageIsOpen()
                         .contains("SearchHotel.php")
                 , "Search Hotel page is not open");
@@ -74,5 +66,17 @@ public class LoginSteps {
         assertTrue(loginPage.verifyUserGetWarningMessage()
                         .contains("Invalid Login details or Your Password might have expired")
                 , "Login message not correct");
+    }
+
+    @Then("User should get a message to enter Username")
+    public void user_should_get_a_message_to_enter_username() throws Throwable {
+        assertTrue(loginPage.setVerifyEmptyUsername().contains("Enter Username")
+                , "Enter username message did not show");
+    }
+
+    @Then("User should get a message to enter password")
+    public void user_should_get_a_message_to_enter_password() {
+        assertTrue(loginPage.setVerifyEmptyPassword().contains("Enter Password")
+                , "Enter Password message did not show");
     }
 }
