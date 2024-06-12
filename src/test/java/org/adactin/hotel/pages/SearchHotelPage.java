@@ -52,6 +52,22 @@ public class SearchHotelPage {
     @CacheLookup
     WebElement searchButton;
 
+    @FindBy(id = "location_span")
+    @CacheLookup
+    WebElement verifyLocationMessage;
+
+    @FindBy(id = "checkin_span")
+    @CacheLookup
+    WebElement verifyCheckInDateMessage;
+
+    @FindBy(id = "checkin_span")
+    @CacheLookup
+    WebElement verifyCheckInDateFormat;
+
+    @FindBy(id = "checkout_span")
+    @CacheLookup
+    WebElement verifyCheckOutDateMessage;
+
     public SearchHotelPage(WebDriver driver) {
         this.driver = driver;
         wait = new WaitMethod(driver);
@@ -60,55 +76,131 @@ public class SearchHotelPage {
     }
 
     public void setLocation(String _location) {
-        wait.waitForElementToDisplay(location, 20);
-        select.selectElementByValue(location, _location);
+        try {
+            wait.waitForElementToDisplay(location, 20);
+            select.selectElementByValue(location, _location);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
     }
 
     public void setHotelType(String _hotelType) {
-        wait.waitForElementToDisplay(hotelType, 20);
-        select.selectElementByValue(hotelType, _hotelType);
+        try {
+            wait.waitForElementToDisplay(hotelType, 20);
+            select.selectElementByValue(hotelType, _hotelType);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
     }
 
     public void setRoomType(String _roomType) {
-        wait.waitForElementToDisplay(roomType, 20);
-        select.selectElementByValue(roomType, _roomType);
+        try {
+            wait.waitForElementToDisplay(roomType, 20);
+            select.selectElementByValue(roomType, _roomType);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
     }
 
     public void setNumberOfRooms(String _numberOfRooms) {
-        wait.waitForElementToDisplay(numberOfRooms, 20);
-        select.selectElementByValue(numberOfRooms, _numberOfRooms);
+        try {
+            wait.waitForElementToDisplay(numberOfRooms, 20);
+            select.selectElementByValue(numberOfRooms, _numberOfRooms);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
     }
 
     public void setCheckInDate(String _checkInDate) {
-        wait.waitForElementToDisplay(checkInDate, 20);
-        checkInDate.clear();
-        checkInDate.sendKeys(_checkInDate);
+        try {
+            wait.waitForElementToDisplay(checkInDate, 20);
+            checkInDate.clear();
+            checkInDate.sendKeys(_checkInDate);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
     }
 
     public void setCheckOutDate(String _checkOutDate) {
-        wait.waitForElementToDisplay(checkOutDate, 20);
-        checkOutDate.clear();
-        checkOutDate.sendKeys(_checkOutDate);
+        try {
+            wait.waitForElementToDisplay(checkOutDate, 20);
+            checkOutDate.clear();
+            checkOutDate.sendKeys(_checkOutDate);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
     }
 
     public void setAdultsPerRoom(String _adultPerRoom) {
-        wait.waitForElementToDisplay(adultPerRoom, 20);
-        select.selectElementByValue(adultPerRoom, _adultPerRoom);
+        try {
+            wait.waitForElementToDisplay(adultPerRoom, 20);
+            select.selectElementByValue(adultPerRoom, _adultPerRoom);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
     }
 
     public void setChildrenPerRoom(String _childrenPerRoom) {
-        wait.waitForElementToDisplay(childrenPerRoom, 20);
-        select.selectElementByValue(childrenPerRoom, _childrenPerRoom);
+        try {
+            wait.waitForElementToDisplay(childrenPerRoom, 20);
+            select.selectElementByValue(childrenPerRoom, _childrenPerRoom);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
     }
 
     public SelectHotelPage setSearchButton() {
-        wait.waitForElementToDisplay(searchButton, 20);
-        searchButton.click();
+        try {
+            wait.waitForElementToDisplay(searchButton, 20);
+            searchButton.click();
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
         return new SelectHotelPage(driver);
     }
 
     public String verifySearchHotelPageIsOpen() {
-        wait.waitForUrlToBe(driver.getCurrentUrl(), 20);
+        try {
+            wait.waitForUrlToBe(driver.getCurrentUrl(), 20);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
         return driver.getCurrentUrl();
+    }
+
+    public String setVerifyLocationMessage() {
+        try {
+            wait.waitForElementToDisplay(verifyLocationMessage, 20);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
+        return verifyLocationMessage.getText().trim();
+    }
+
+    public String setVerifyCheckInDateMessage() {
+        try {
+            wait.waitForElementToDisplay(verifyCheckInDateMessage, 20);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
+        return verifyCheckInDateMessage.getText().trim();
+    }
+
+    public String setVerifyCheckInDateFormat() {
+        try {
+            wait.waitForElementToDisplay(verifyCheckInDateFormat, 20);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
+        return verifyCheckInDateFormat.getText().trim();
+    }
+
+    public String setVerifyCheckOutDateMessage() {
+        try {
+            wait.waitForElementToDisplay(verifyCheckOutDateMessage, 20);
+        } catch (Exception exception) {
+            exception.fillInStackTrace();
+        }
+        return verifyCheckOutDateMessage.getText().trim();
     }
 }
